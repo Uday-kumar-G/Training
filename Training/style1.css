@@ -8,6 +8,7 @@ margin:0%;
   background-color:#C3F9FA;
   padding-bottom:80px;
   display:flex;
+  flex-direction:row-reverse;
 }
 
 
@@ -18,7 +19,7 @@ padding:10px;
 margin:2px;
 text-align:center;
 font-size:60px;
-background-color:#36393D;
+background-color:#FF7400;
 color:white;
 }
 h3{
@@ -54,7 +55,7 @@ width:99%;
 bottom:0;
 left:0;
 border-radius:10px;
- background-color:#356AA0;
+ background-color:#73880A;
  display:flex;
  color:white;
  padding:20px;
@@ -74,7 +75,7 @@ padding:10px;
 }
 
 .navbar{
-background-color:#CDEB8B;
+background-color:#ADABAB;
 border:2px solid black;
 border-radius:10px;
 padding:20px;
