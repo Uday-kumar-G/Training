@@ -88,10 +88,87 @@ SSLC :- AVK kudligi | 84.96 | 2020</p>
     </div>
   
   </footer>
-
+  
+<div class="jss">
+  <h1>the Java script Tasks</h1>
+  <div class="A">
+  <form>
+  <fieldset>
+    <h4> 1.  Max(): A form to find max of two numbers.</h4>
+      <div class="num1">
+      <label for="inp1">enter 1st number</label>
+      <input id="one" type="number" placeholder="enter the num 1">
+    </div><br>
+    <div class="num2">
+      <label for="inp2">enter 2nd number</label>
+      <input id="two" type="number" placeholder="Enter the num 2">
+    </div>
+      <div class="res">
+        <button type="button" onclick="Max()">
+          check-res
+        </button>
+       <h2>The result is:- <span id="val"></span></h2>
+      </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="A">
+    <form>
+    <fieldset>
+    <h4> 2.Reverse(): A form to reverse a string. </h4>
+      <div class="str">
+        <input id="st" type="text" placeholder="enter the text">
+      </div><br>
+      <button type="button" onclick="Reverse()">
+        make-rev
+      </button>
+      <br>
+      <div class="res">
+        <h2>The Res:- <span id="rev"></span>
+      </div>
+      </fieldset>
+      </form>
+    </div>
+    <div class="A">
+     
+        <div class="sentence">
+          <form>
+          <fieldset>
+           <h4> 3. FindLargestWord(): </h4>
+            <input id="sent" type="text" placeholder="enter a words with A comma seperated">
+            <br>
+            <button type="button" onclick="find_largest()">
+              check-largest-word
+            </button>
+            <h2>Largest-str:<span id="lar"></span></h2>
+            </fieldset>
+          </form>
+        </div>
+      </div>        
+      <div class="A">    
+        <div class="cooki">
+          <form>
+          <fieldset>
+           <h4> 4. Cookies: </h4><br>
+            <div>
+              <input id="name" type="text" placeholder="enter the name">
+            </div><br>
+            <div>
+              <input id="ph" type="tel" placeholder="entre the ph no.">
+            </div><br>
+          
+          <button type="button" onclick="save_cooki()">
+            Save
+          </button>
+          </fieldset>
+          </form>
+          
+          <body onload="load_cookie()">
+        </div>
+            
+  </div>   
+  <script src="My_JS.js"></script>
 </body>
-
-
 
 
 

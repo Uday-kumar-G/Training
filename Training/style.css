@@ -48,8 +48,8 @@ font-size:25px;
 }
 
 
-.foot{
-position:fixed;
+.foot{/*
+position:;*/
 width:99%;
 bottom:0;
 left:0;
@@ -93,5 +93,59 @@ border-radius:10px;
 
 }
 
-/*flex-direction:column;*/
+/*Now these are all for the Java Script tasks*/
+
+h4{
+  padding:5px;
+  font-size:20px;
+  color:white;
+  
+}
+.jss{
+margin:20px;
+border:2px solid black;
+border-radius:15px;
+background-color:grey;
+color:white;
+input{
+  height:20px;
+  font-size:18px;
+  padding:10px;
+  margin:20px;
+  border:2px solid black;
+  border-radius:10px;
+  color:black;
+}
+}
+button{
+  background-color:lightgreen;
+  height:40px;
+  font-size:18px;
+  padding:10px;
+  margin:20px;
+  border:2px solid black;
+  border-radius:10px;
+  color:black;
+}
+
+h2{
+ padding:15px;
+  font-size:30px;
+  color:white;
+  
+}
+
+label{
+ padding:10px;
+  font-size:30px;
+  color:white;
+}
+
+.A{
+padding:10px;
+border:2px solid black;
+  border-radius:10px;
+   margin:6px;
+}
+
 
