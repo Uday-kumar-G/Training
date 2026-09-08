@@ -19,7 +19,6 @@ else{
     }
 
 }
-
 //for the revers string
 let stri=document.getElementById("st");
 let reversed=document.getElementById("rev");
@@ -102,6 +101,7 @@ function load_cookie(){
     ph.innerText=a[1]
 };
 
+//JQuery activity here
  $(window).on("load", function(){
         
         alert("Page fully loaded");
