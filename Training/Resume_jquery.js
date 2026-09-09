@@ -123,14 +123,36 @@ $(document).ready(function(){
 //    $("#mypage-header").mouseenter(function(){
 //         $(this).css("font-size","10px");
 //     });
-$("#mypage-header").css("height","10px")
+
+
+$("#mypage-header").css({
+    "height": "10px",
+    "overflow": "hidden"
+});
 
 $("#mypage-header").on("mouseenter", function(){
-    $(this).css("font-size","30px");
+
+    $(this).css("height", "80px");
+
 });
+
 $("#mypage-header").on("mouseleave", function(){
-    $(this).css("font-size","10px");
+
+    $(this).css("height", "10px");
+
 });
+
+
+
+
+// $("#mypage-header").css({"height":"10px","overflow":"hidden"})
+
+// $("#mypage-header").on("mouseenter", function(){
+//     $(this).css("font-size","30px");
+// });
+// $("#mypage-header").on("mouseleave", function(){
+//     $(this).css("font-size","10px");
+// });
    $("#mypage-footer").slideDown(10000,function(){
     alert("Slidedown after 10 seconds")
    });
