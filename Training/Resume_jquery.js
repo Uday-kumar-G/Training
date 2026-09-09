@@ -102,23 +102,68 @@ function load_cookie(){
 };
 
 //JQuery activity here
- $(window).on("load", function(){
-        
-        alert("Page fully loaded");
-    });
+let technologies = [
+    "Python",
+    "Django",
+    "React",
+    "JavaScript",
+    "jQuery",
+    "HTML",
+    "CSS",
+    "MySQL",
+    "FastAPI"
+];
+
 $(document).ready(function(){
 
+    $("#sent").autocomplete({
+    source: technologies
+});
+
+     $("#myDialog").dialog({
+        autoOpen: false,
+        modal: true,
+
+        buttons: {
+            "OK": function(){
+                $(this).dialog("close");
+            },
+
+            "Cancel": function(){
+                $(this).dialog("close");
+            }
+        }
+    });
+     $("#tabs").tabs();
+
+    $("#accordion").accordion({
+         collapsible: true,
+          heightStyle: "content"
+    });
+    $("button").button({
+    icon: "ui-icon-disk",
+    "filter": "brightness(0) invert(1)"
+});
+    $("a").css("text-decoration","none");
+   $("#date_func").attr("text","date");
+   $("#date_func").datepicker({
+    dateFormat: "dd/mm/yy"
+});
+    $("#date_func").css("background-color","#F3CD97")
    $("#full_body").css("background-color","#F3CD97");
-   $("input").css("border","none");
-    $("input").css("padding","10px");
-    $("input").css("border-radius","10px");
+   $("input").css({
+    "border":"none",
+    "padding":"10px",
+    "border-radius":"10px",
+
+   });
    $("table,th,td").css("border","2px solid #FF1A00 ");
    $("#tbl").each(function(){
     $(this).css("color","#CC0000");
    });
    $("#mypage-footer").hide();
    
-   $("#mypage-footer").before("<div></div>");
+   $("#mypage-footer").before("<div><h2>Reference</h2><h3>1. <a href='https://www.w3schools.com/jquery/jquery_events.asp'>Refer here for the Jquery</a></h3></div>");
    $("footer").css({"background-color":"#BC4F4F","color":"white",
     "justify-content":"space-evenly",
     "padding":"10px",
@@ -126,7 +171,7 @@ $(document).ready(function(){
     "border-radius":"10px"
 
 });
-   $("a").css("text-decoration","none")
+   
     // $("#mypage-footer").toogle();
 //    $("#mypage-header").mouseenter(function(){
 //         $(this).css("font-size","10px");
@@ -166,7 +211,7 @@ $("#full_body").css({
 //     $(this).css("font-size","10px");
 // });
    $("#mypage-footer").slideDown(10000,function(){
-    alert("Slidedown after 10 seconds")
+     $("#myDialog").dialog("open");
    });
     
 });
@@ -193,8 +238,8 @@ $(".b").css({
 $("button").css({
     "padding":"10px",
     "font-size":"20px",
-    "background-color":"green",
-    "color":"white",
+    "background-color":"lightgreen",
+    "color":"brown",
     "border-radius":"10px"
 })
 // a. Change the background color to #FFFF88 and 
@@ -215,3 +260,18 @@ $("#tbl").css({
 $("td").css({
     "padding":"10px"
 })
+
+
+$("#head").css({
+    "background-color":"#FEF2A0",
+    "border":"1px solid white",
+    "border-radius":"10px",
+    "margin":"30px"
+
+})
+
+ $(window).on("load", function(){
+
+    $("#myDialog").dialog("open");
+
+});
