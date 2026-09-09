@@ -117,7 +117,8 @@ $(document).ready(function(){
     $(this).css("color","#CC0000");
    });
    $("#mypage-footer").hide();
-   $("#mypage-footer").before("<div><h2>this is the content display before the footes and this is the reference  </h2><h3>Phone no.:-9353875831 E-mail:-<a href='#'>uday.kumar@moolya.com</a><a href='https://github.com/Uday-kumar-G' target='-blank'>Git-hub</a></h3></div>")
+   
+   $("#mypage-footer").before("<div></div>")
     // $("#mypage-footer").toogle();
 //    $("#mypage-header").mouseenter(function(){
 //         $(this).css("font-size","10px");
@@ -130,9 +131,9 @@ $("#mypage-header").on("mouseenter", function(){
 $("#mypage-header").on("mouseleave", function(){
     $(this).css("font-size","10px");
 });
-
-
-    $("#mypage-footer").slideDown(10000);
+   $("#mypage-footer").slideDown(10000,function(){
+    alert("Slidedown after 10 seconds")
+   });
     
 
 
