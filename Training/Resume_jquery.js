@@ -108,7 +108,7 @@ function load_cookie(){
     });
 $(document).ready(function(){
 
-   $("#full_body").css("background-color","#FFFF88 ");
+   $("#full_body").css("background-color","#F3CD97");
    $("input").css("border","none");
     $("input").css("padding","10px");
     $("input").css("border-radius","10px");
@@ -118,7 +118,15 @@ $(document).ready(function(){
    });
    $("#mypage-footer").hide();
    
-   $("#mypage-footer").before("<div></div>")
+   $("#mypage-footer").before("<div></div>");
+   $("footer").css({"background-color":"#BC4F4F","color":"white",
+    "justify-content":"space-evenly",
+    "padding":"10px",
+    "margin":"10px 0px 10px 0px",
+    "border-radius":"10px"
+
+});
+   $("a").css("text-decoration","none")
     // $("#mypage-footer").toogle();
 //    $("#mypage-header").mouseenter(function(){
 //         $(this).css("font-size","10px");
@@ -127,13 +135,13 @@ $(document).ready(function(){
 
 $("#mypage-header").css({
     "height": "10px",
-    "overflow": "hidden"
+    "overflow": "hidden",
+    "text-align":"center"
 });
 
 $("#mypage-header").on("mouseenter", function(){
 
-    $(this).css("height", "80px");
-
+    $(this).css("height", "50px");
 });
 
 $("#mypage-header").on("mouseleave", function(){
@@ -142,6 +150,10 @@ $("#mypage-header").on("mouseleave", function(){
 
 });
 
+$("#full_body").css({
+    "padding":"10px",
+    "margin":"10px"
+})
 
 
 
@@ -157,13 +169,49 @@ $("#mypage-header").on("mouseleave", function(){
     alert("Slidedown after 10 seconds")
    });
     
-
-
-
 });
+$(".dis").css({
+    "display":"flex",
+    "border":"1px solid white",
+    "border-radius":"10px",
+    "padding":"10px",
+    "width":"50%",
+    "margin":"20px",
+    "padding-left":"30px"
+   
+})
+$(".b").css({
+   "display":"flex",
+    "padding":"10px",
+    "width":"96%",
+    "margin":"20px",
+    "border":"1px solid white",
+    "border-radius":"10px",
+    "background-color":"#E98B50"
 
+})
+$("button").css({
+    "padding":"10px",
+    "font-size":"20px",
+    "background-color":"green",
+    "color":"white",
+    "border-radius":"10px"
+})
 // a. Change the background color to #FFFF88 and 
 // remove the border for all input elements in the
 //  page. Change table border color to #FF1A00 and 
 //  text to #CC0000.
 
+$("#contact-info").css({
+    "display": "flex",
+    "justify-content": "space-evenly",
+    "align-items": "center"
+});
+$("#tbl").css({
+    "background-color":"#FEF2A0",
+    "margin-left":"30px",
+   
+})
+$("td").css({
+    "padding":"10px"
+})
