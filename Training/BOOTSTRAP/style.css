@@ -52,18 +52,23 @@ p {
   font-size: 25px;
 }
 
-
+#mypage-footer{
+   display: flex;
+  justify-content: space-around;
+}
 .foot {
   /*
 position:;*/
   width: 99%;
   bottom: 0;
   left: 0;
+  padding: 10px;
+  border:1px solid #36393D;
   border-radius: 10px;
   background-color: #356AA0;
   display: flex;
+  justify-content: space-around;
   color: white;
-  padding: 20px;
   font-size: 25px;
   align-items: center;
   justify-content: space-between;
