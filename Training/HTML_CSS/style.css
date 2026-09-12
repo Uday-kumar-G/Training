@@ -3,163 +3,86 @@
   margin: 0%;
 
 }
-
-.cont {
-  background-color: #C3F9FA;
-  padding-bottom: 80px;
-  display: flex;
+.mypage-content{
+  background-color:#f8d5a1;
+  height: 100%;
 }
-
-
-h1 {
-  border: 2px solid white;
+.page-header{
+  border: 1px solid black;
   border-radius: 10px;
+  background-color:#d45050;
   padding: 10px;
   margin: 2px;
   text-align: center;
-  font-size: 60px;
-  background-color: #36393D;
-  color: white;
-}
-
-h3 {
-  font-size: 30px;
-}
-
-.navv {
-
-
-  /*justify-content:center;*/
-  align-items: center;
-
-}
-
-nav {
   font-size: 35px;
-  font-family: "Times New Roman";
-  width: 25%;
-  padding: 10px;
+  color: #ebf4c1;
 }
-
-content {
-  font-family: "Times New Roman";
-  font-size: 25px;
-  width: 75%;
-  padding: 10px;
-}
-
-p {
-  font-size: 25px;
-}
-
-#mypage-footer{
-   display: flex;
-  justify-content: space-around;
-}
-.foot {
-  /*
-position:;*/
-  width: 99%;
-  bottom: 0;
-  left: 0;
-  padding: 10px;
-  border:1px solid #36393D;
-  border-radius: 10px;
-  background-color: #356AA0;
+.left-navbar{
   display: flex;
-  justify-content: space-around;
-  color: white;
-  font-size: 25px;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
 }
-
-.no {
-  color: black;
-}
-
-a {
-  text-decoration: None;
-  color: white;
-  padding: 10px;
-}
-
-.navbar {
-  background-color: #CDEB8B;
-  border: 2px solid black;
-  border-radius: 10px;
-  padding: 20px;
-  padding-bottom: 100px;
-  text-align: left;
-
-  a {
-    font-size: 25px;
-    color: black;
-  }
-}
-
-.disp {
-  padding: 25px;
-  border: 2px solid black;
-  border-radius: 10px;
-
-}
-
-/*Now these are all for the Java Script tasks*/
-
-h4 {
-  padding: 5px;
+.page-navbar{
   font-size: 20px;
-  color: white;
-
-}
-
-.jss {
-  margin: 20px;
-  border: 2px solid black;
-  border-radius: 15px;
-  background-color: grey;
-  color: white;
-
-  input {
-    height: 20px;
-    font-size: 18px;
-    padding: 10px;
-    margin: 20px;
-    border: 2px solid black;
-    border-radius: 10px;
-    color: black;
-  }
-}
-
-button {
-  background-color: lightgreen;
-  height: 40px;
-  font-size: 18px;
-  padding: 10px;
-  margin: 20px;
   border: 2px solid black;
   border-radius: 10px;
-  color: black;
-}
-
-h2 {
-  padding: 15px;
-  font-size: 30px;
-  color: white;
-
-}
-
-label {
+  background-color: bisque;
   padding: 10px;
+  display: flex;
   font-size: 30px;
-  color: white;
+  flex-direction: column;
+  justify-content:space-between;
 }
-
-.A {
-  padding: 10px;
-  border: 2px solid black;
+.page-navbar a{
+  text-decoration: none;
+  color:#c32f41 ;
+}
+#nav-education{
+  margin-bottom: 50%;
+}
+#nav-internship{
+  margin-bottom: 100%;
+}
+#nav-project{
+  margin-bottom: 90%;
+}
+.page-detail{
+  font-size: 25px;
+  background-color: #F3E6D5;
+  border:2px solid #d45050;
   border-radius: 10px;
-  margin: 6px;
+  padding: 30px;
+  margin: 2px;
+  width: 100%;
+}
+#page-object{
+  padding: 10px;
+  color:rgb(68, 31, 31) ;
+}
+#page-education{
+  padding: 10px;
+  color:rgb(68, 31, 31) ;
+}
+#page-internship{
+  padding: 10px;
+  color:rgb(68, 31, 31) ;
+}
+
+#page-project{
+  padding: 10px;
+  color:rgb(68, 31, 31) ;
+}
+.page-footer{
+  background-color: #800020;
+  color: #F3E6D5;
+  height: 50px;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+}
+.page-footer a{
+  color: #ffe0b3;
+  text-decoration: none;
+
 }

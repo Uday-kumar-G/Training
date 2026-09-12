@@ -1,103 +1,175 @@
-let num1 = document.getElementById("one");
-let num2 = document.getElementById("two");
-let valuee = document.getElementById("val");
-//let button=document.getElementById("btn");
-function Max() {
-    let n1 = Number(num1.value);
-    let n2 = Number(num2.value);
-    if (n1 > n2) {
-        valuee.innerText = n1;
-        console.log("num1 is larger");
-    }
-    else if (n1 < n2) {
-        valuee.innerText = n2;
-        console.log("num2 is larger");
-    }
-    else {
-        valuee.innerText = n1;
-        console.log("both are same numbers");
+// 1. FIND MAX VALUE
+
+let firstInput = document.getElementById("fitst-input");
+let secondInput = document.getElementById("second-input");
+let maxValue = document.getElementById("max-value");
+let maxButton = document.getElementById("submit-btn");
+
+maxButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let num1 = Number(firstInput.value);
+    let num2 = Number(secondInput.value);
+
+    if (firstInput.value === "" || secondInput.value === "") {
+        alert("Please enter both numbers");
+        return;
     }
 
-}
-
-//for the revers string
-let stri = document.getElementById("st");
-let reversed = document.getElementById("rev");
-function Reverse() {
-    let s = stri.value
-    if (s.length === 0) {
-        alert("please enter a value to make it revers");
-    }
+    if (num1 > num2) {
+        maxValue.innerText = num1;
+    } 
+    else if (num2 > num1) {
+        maxValue.innerText = num2;
+    } 
     else {
-        let myarr = s.split("");
-        let i = 0
-        let j = s.length - 1
-        while (i < j) {
-            let tem = myarr[i]
-            myarr[i] = myarr[j]
-            myarr[j] = tem
-            i++
-            j--
+        maxValue.innerText = "Both are equal";
+    }
+});
+
+
+// 2. REVERSE STRING
+
+let stringInput = document.getElementById("string-to-rev");
+let reverseButton = document.getElementById("make-rev");
+let reversedString = document.getElementById("reversed-str");
+
+reverseButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let str = stringInput.value;
+
+    if (str === "") {
+        alert("Please enter a string");
+        return;
+    }
+
+    let arr = str.split("");
+
+    let i = 0;
+    let j = arr.length - 1;
+
+    while (i < j) {
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+
+        i++;
+        j--;
+    }
+
+    reversedString.innerText = arr.join("");
+});
+
+
+// 3. FIND LARGEST STRING
+
+let stringsInput = document.getElementById("string-inp");
+let largestButton = document.getElementById("give-larg");
+let largestValue = document.getElementById("Large-value");
+
+largestButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let str = stringsInput.value;
+
+    if (str === "") {
+        alert("Please enter comma separated strings");
+        return;
+    }
+
+    let words = str.split(",");
+
+    let largest = "";
+    let maxLength = 0;
+
+    words.forEach(function (word) {
+
+        word = word.trim();
+
+        if (word.length > maxLength) {
+            maxLength = word.length;
+            largest = word;
         }
-        let revers_res = myarr.join("")
-        reversed.innerText = revers_res
+    });
+
+    largestValue.innerText = largest;
+});
+
+// 4. SAVE COOKIE
+
+let userName = document.getElementById("user-name");
+let phoneNumber = document.getElementById("Phone-num");
+
+let cookieName = document.getElementById("cooki-name");
+let cookiePhone = document.getElementById("cooki-Phone");
+
+let saveCookieButton = document.getElementById("save-cookie");
+
+
+saveCookieButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let name = userName.value;
+    let phone = phoneNumber.value;
+
+    if (name === "") {
+        alert("Please enter your name");
+        return;
     }
+
+    if (phone.length !== 10) {
+        alert("Phone number should contain 10 digits");
+        return;
+    }
+
+    document.cookie =
+        "name=" + encodeURIComponent(name) +
+        "; max-age=86400; path=/";
+
+    document.cookie =
+        "phone=" + encodeURIComponent(phone) +
+        "; max-age=86400; path=/";
+
+    cookieName.innerText = name;
+    cookiePhone.innerText = phone;
+
+    alert("Cookie saved successfully");
+});
+
+
+
+// 5. LOAD COOKIE AUTOMATICALLY
+
+function loadCookies() {
+
+    let cookies = document.cookie.split(";");
+
+    cookies.forEach(function (cookie) {
+
+        let parts = cookie.trim().split("=");
+
+        let key = parts[0];
+        let value = decodeURIComponent(parts[1] || "");
+
+        if (key === "name") {
+
+            userName.value = value;
+
+            cookieName.innerText = value;
+        }
+
+        if (key === "phone") {
+
+            phoneNumber.value = value;
+
+            cookiePhone.innerText = value;
+        }
+    });
 }
 
 
-//For largetst words
-
-let sent1 = document.getElementById("sent");
-let lar = document.getElementById("lar");
-
-function find_largest() {
-    let s1 = sent1.value;
-    if (s1.length === 0) {
-        alert("please enter a value to make it revers");
-    }
-    else {
-        let ar = s1.split(",");
-        let maxx = 0
-        let larword = ""
-        ar.map((word) => {
-            let len = word.length;
-            if (len > maxx) {
-                larword = word;
-                maxx = len;
-            }
-        })
-        lar.innerText = larword;
-    }
-}
-
-
-
-
-//cookie printing
-let nam = document.getElementById("name");
-let phone = document.getElementById("ph");
-
-
-function save_cooki() {
-    let see = nam.value;
-    let n = phone.value;
-    if (see.length === 0) {
-        alert("you should enter the name");
-    }
-    if (n.toString().length < 10 || n.toString().length > 10) {
-        alert("hey Phone number length should be a lenght of 10")
-    }
-    else {
-        document.cookie = "name=" + encodeURIComponent(nam.value) + "; max-age=86400; path=/";
-        document.cookie = "ph=" + encodeURIComponent(phone.value) + "; max-age=86400; path=/";
-        alert("data saved successfully")
-    }
-}
-function load_cookie() {
-    /*console.log(document.cookie);*/
-
-    let cook = document.cookie
-    let a = cook.split(";")
-    nam.innerText = a[0]
-    ph.innerText = a[1]
-}
+// Run when page loads
+window.addEventListener("load", function () {
+    loadCookies();
+});

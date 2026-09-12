@@ -2,184 +2,170 @@
 <html>
 
 <head>
-    <title>G_Uday_Resume</title>
-    <link rel="stylesheet" href="style.css">
+  <title>G_Uday_Resume</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <heading>
-        <h1>G Uday kumar</h1>
-    </heading>
-    <div class="cont">
-        <div class="navbar">
-            <a href="#obj">1.Objects</a><br>
-            <a href="#edu">2.Education</a><br>
-            <a href="#iep">3.Internship</a><br>
-            <a href="#pro">4.Project</a><br>
+  <div class="mypage-content">
+    <div class="page-header">
+      <h1>G Uday kumar</h1>
+    </div>
+    <div class="left-navbar">
+
+
+      <div class="page-navbar">
+        <a href="#page-object" id="nav-object">1.Objects</a><br>
+        <a href="#page-education" id="nav-education">2.Education</a><br>
+        <a href="#page-internship" id="nav-internship">3.Internship</a><br>
+        <a href="#page-project" id="nav-project">4.Project</a><br>
+      </div>
+      <div class="page-detail">
+        <content id="page-object">
+          <p>Computer Science graduate seeking a Full Stack Developer role to apply my skills in Python, Django,
+            React, SQL, and web development
+            while contributing to real-world projects and growing as a software professional.
+          </p>
+        </content>
+        <content id="page-education">
+          <p>Bachelor of Engineering (B.E.) – Computer Science & Engineering RLJIT, Doddaballapur | VTU CGPA: 8.95 |
+            Year: 2026<br>
+            Pre-University Course (PUC) – Science College :-MDRS Science pu college | 86.17 | 2022<br>
+            SSLC :- AVK kudligi | 84.96 | 2020
+          </p>
+        </content>
+        <content id="page-internship">
+          <ul>
+            <h3>
+              Dhee Coding Lab (DCL) – ProDhee Technology Pvt. Ltd.
+            </h3>
+            <li>Developed web applications using HTML, CSS, JavaScript, React, Python, Django, and SQL.</li>
+            <li>Built responsive frontend interfaces and integrated them with backend APIs.</li>
+            <li>Worked with REST APIs, FastAPI, Django, and MySQL.</li>
+            <li>Used Git and GitHub for version control.</li>
+            <li>Practiced debugging, problem-solving, and full-stack application development.</li>
+          </ul>
+        </content>
+        <content id="page-project">
+          <h3>Weather Application</h3>
+          <p>React, JavaScript, CSS, OpenWeather API<br>
+
+            Developed a responsive weather application that fetches real-time weather data based on city searches.
+            Displayed temperature, weather conditions,<br> wind speed, pressure, and feels-like temperature.
+            Used React Hooks and API integration with dynamic UI updates.</p>
+          <br>
+
+          <h3>Staff Leave Management System (SLMS)</h3>
+          <p>Python, Django, HTML, CSS, SQL<br>
+
+            Developed a role-based leave management system for staff and administrators.
+            Implemented registration, login, leave application,<br> and leave approval/rejection features.
+            Used Django authentication/session management and database integration.
+          </p>
+        </content>
+      </div>
+    </div>
+    <div class="java-script">
+        <div class="max-value">
+            <form action="POST">
+                <div class="task-name">
+                    <h1>FInd Max Value Among Two Values</h1>
+                </div>
+                <div class="input-section">
+                    <label for="inp1">
+                        Please enter 1st number
+                    </label>
+                    <input type="number" name="inp1" id="fitst-input" class="inp"><br><br>
+                    <label for="inp2">
+                        please enter 2nd number
+                    </label>
+                    <input type="number" name="inp2" id="second-input"  class="inp">
+                </div>
+                <div class="check">
+                    <button type="submit" id="submit-btn">Check</button>
+                </div>
+                <div class="resuslt">
+                    <h3>result:- <span id="max-value"></span></h3>
+                </div>
+            </form>
         </div>
-        <div class="disp">
-            <div>
-                <div class="navv">
-                    <nav>
-                        <a href="#obj" class="no">
-                            <h3>Objectives:-</h3>
-                        </a>
-                    </nav>
-                    <content id="obj">
-                        <p>Computer Science graduate seeking a Full Stack Developer role to apply my skills in Python,
-                            Django, React, SQL, and web development
-                            while contributing to real-world projects and growing as a software professional.</p>
-                    </content>
+        <div class="reverse-string">
+            <form action="POST">
+                <div class="task-name">
+                    <h1>Reverse the String</h1>
                 </div>
-                <div class="navv">
-                    <nav>
-                        <a href="#edu" class="no">
-                            <h3>Educations:-</h3>
-                        </a>
-                    </nav>
-                    <content id="edu">
-                        <p>Bachelor of Engineering (B.E.) – Computer Science & Engineering RLJIT, Doddaballapur | VTU
-                            CGPA: 8.95 | Year: 2026<br>
-                            Pre-University Course (PUC) – Science College :-MDRS Science pu college | 86.17 | 2022<br>
-                            SSLC :- AVK kudligi | 84.96 | 2020</p>
-                    </content>
+                <div class="input-section">
+                    <label for="str">
+                        Enter the string to make it reverse
+                    </label>
+                    <input type="text" name="str" id="string-to-rev"  class="inp" >
                 </div>
-                <div class="navv">
-                    <nav>
-                        <a href="#iep" class="no">
-                            <h3>Internship experience</h3>
-                        </a>
-                    </nav>
-                    <content id="iep">
-                        <ul>
-                            <h3>
-                                Dhee Coding Lab (DCL) – ProDhee Technology Pvt. Ltd.
-                            </h3>
-                            <li>Developed web applications using HTML, CSS, JavaScript, React, Python, Django, and SQL.
-                            </li>
-                            <li>Built responsive frontend interfaces and integrated them with backend APIs.</li>
-                            <li>Worked with REST APIs, FastAPI, Django, and MySQL.</li>
-                            <li>Used Git and GitHub for version control.</li>
-                            <li>Practiced debugging, problem-solving, and full-stack application development.</li>
-                        </ul>
+                <div class="make">
+                    <button type="submit" id="make-rev">Reverse</button>
                 </div>
-                <div class="navv">
-                    <nav>
-                        <a href="#pro" class="no" <h3>Projects:-</h3></a>
-                    </nav>
-                    <donten id="pro">
-                        <h3>Weather Application</h3>
-                        <p>React, JavaScript, CSS, OpenWeather API<br>
-
-                            Developed a responsive weather application that fetches real-time weather data based on city
-                            searches.
-                            Displayed temperature, weather conditions,<br> wind speed, pressure, and feels-like
-                            temperature.
-                            Used React Hooks and API integration with dynamic UI updates.</p>
-                        <br>
-
-                        <h3>Staff Leave Management System (SLMS)</h3>
-                        <p>Python, Django, HTML, CSS, SQL<br>
-
-                            Developed a role-based leave management system for staff and administrators.
-                            Implemented registration, login, leave application,<br> and leave approval/rejection
-                            features.
-                            Used Django authentication/session management and database integration.</p>
-                        </content>
+                <div class="result">
+                    <h3>result:- <span id="reversed-str"></span></h3>
                 </div>
-            </div>
+            </form>
+        </div>
+        <div class="find-largest-str">
+            <form action="POST">
+                <div class="task-name">
+                    <h1>FInd the largest string amoung the comma separated strings</h1>
+                </div>
+                <div class="input-section">
+                    <label for="str-inp">
+                        Enter a comma separated strings to find largest among that 
+                    </label>
+                    <input type="text" name="str-inp" id="string-inp"  class="inp">
+                </div>
+                <div class="find-large">
+                    <button type="submit" id="give-larg">Largest</button>
+                </div>
+                <div class="result">
+                    <h3>Laregst:- <span id="Large-value" ></span></h3>
+                </div>
+            </form>
+        </div>
+        <div class="cookies">
+            <form action="POST">
+                <div class="task-name">
+                    <h1>Display Saved Cookies</h1>
+                </div>
+                <div class="input-section">
+                    <label for="first-name">
+                        please enter your name
+                    </label>
+                    <input type="text" name="first-name" id="user-name"  class="inp"><br><br>
+                    <label for="Ph-num">
+                        Enter your Mobile number 
+                    </label>
+                    <input type="tel" name="Ph-num" id="Phone-num"  class="inp">
+                </div>
+                <div class="save-cookie">
+                    <button type="submit" id="save-cookie">Save</button>
+                </div>
+                <div class="display-cookies">
+                    <h3>Name:- <span id="cooki-name"></span></h3>
+                    <h3>Phone-num:- <span id="cooki-Phone"></span></h3>
+                </div>
+            </form>
         </div>
     </div>
-    <footer class="foot">
-        <div class="foot1">
-            <h5>Ph:- 9353875831</h5>
-        </div>
-        <div class="foot1">
-            <a href="#">uday.kumar@moolya.com</a>
-        </div>
-        <div class="foot1">
-            <a href="https://github.com/Uday-kumar-G" target="-blank">Git-hub</a>
-        </div>
-
-    </footer>
-
-    <div class="jss">
-        <h1>the Java script Tasks</h1>
-        <div class="A">
-            <form>
-                <fieldset>
-                    <h4> 1. Max(): A form to find max of two numbers.</h4>
-                    <div class="num1">
-                        <label for="inp1">enter 1st number</label>
-                        <input id="one" type="number" placeholder="enter the num 1">
-                    </div><br>
-                    <div class="num2">
-                        <label for="inp2">enter 2nd number</label>
-                        <input id="two" type="number" placeholder="Enter the num 2">
-                    </div>
-                    <div class="res">
-                        <button type="button" onclick="Max()">
-                            check-res
-                        </button>
-                        <h2>The result is:- <span id="val"></span></h2>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        <div class="A">
-            <form>
-                <fieldset>
-                    <h4> 2.Reverse(): A form to reverse a string. </h4>
-                    <div class="str">
-                        <input id="st" type="text" placeholder="enter the text">
-                    </div><br>
-                    <button type="button" onclick="Reverse()">
-                        make-rev
-                    </button>
-                    <br>
-                    <div class="res">
-                        <h2>The Res:- <span id="rev"></span>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        <div class="A">
-
-            <div class="sentence">
-                <form>
-                    <fieldset>
-                        <h4> 3. FindLargestWord(): </h4>
-                        <input id="sent" type="text" placeholder="enter a words with A comma seperated">
-                        <br>
-                        <button type="button" onclick="find_largest()">
-                            check-largest-word
-                        </button>
-                        <h2>Largest-str:<span id="lar"></span></h2>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-        <div class="A">
-            <div class="cooki">
-                <form>
-                    <fieldset>
-                        <h4> 4. Cookies: </h4><br>
-                        <div>
-                            <input id="name" type="text" placeholder="enter the name">
-                        </div><br>
-                        <div>
-                            <input id="ph" type="tel" placeholder="entre the ph no.">
-                        </div><br>
-
-                        <button type="button" onclick="save_cooki()">
-                            Save
-                        </button>
-                    </fieldset>
-                </form>
-
-                <body onload="load_cookie()">
-            </div>
-
-        </div>
-        <script src="resume_js.js"></script>
+    <div class="page-footer">
+      <span>
+        Ph No.:-9353875831
+      </span>
+      <span>
+        E-mail:- <a href="uday.kumar@moolya.com">Uday.kumar@moolya.com</a>
+      </span>
+      <span>
+        GitHub:- <a href="https://github.com/Uday-kumar-G">Click_here</a>
+      </span>
+    </div>
+  </div>
+  <script src="resume_js.js"></script>
 </body>
+</html>
+
+    
