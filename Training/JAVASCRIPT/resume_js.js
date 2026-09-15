@@ -99,10 +99,10 @@ largestButton.addEventListener("click", function (event) {
 // 4. SAVE COOKIE
 
 let userName = document.getElementById("user-name");
-let phoneNumber = document.getElementById("Phone-num");
+let phoneNumber = document.getElementById("Phone-number");
 
-let cookieName = document.getElementById("cooki-name");
-let cookiePhone = document.getElementById("cooki-Phone");
+let cookieName = document.getElementById("savedName");
+let cookiePhone = document.getElementById("savedPhone");
 
 let saveCookieButton = document.getElementById("save-cookie");
 
