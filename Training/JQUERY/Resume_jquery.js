@@ -1,218 +1,258 @@
-let num1 = document.getElementById("one");
-let num2 = document.getElementById("two");
-let valuee = document.getElementById("val");
-//let button=document.getElementById("btn");
-function Max() {
-    let n1 = Number(num1.value);
-    let n2 = Number(num2.value);
-    if (n1 > n2) {
-        valuee.innerText = n1;
-        console.log("num1 is larger");
-    }
-    else if (n1 < n2) {
-        valuee.innerText = n2;
-        console.log("num2 is larger");
-    }
-    else {
-        valuee.innerText = n1;
-        console.log("both are same numbers");
+// 1. FIND MAX VALUE
+
+let firstInput = document.getElementById("fitst-input");
+let secondInput = document.getElementById("second-input");
+let maxValue = document.getElementById("max-value");
+let maxButton = document.getElementById("submit-btn");
+
+maxButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let num1 = Number(firstInput.value);
+    let num2 = Number(secondInput.value);
+
+    if (firstInput.value === "" || secondInput.value === "") {
+        alert("Please enter both numbers");
+        return;
     }
 
-}
-//for the revers string
-let stri = document.getElementById("st");
-let reversed = document.getElementById("rev");
-function Reverse() {
-    let s = stri.value
-    if (s.length === 0) {
-        alert("please enter a value to make it revers");
-    }
+    if (num1 > num2) {
+        maxValue.innerText = num1;
+    } 
+    else if (num2 > num1) {
+        maxValue.innerText = num2;
+    } 
     else {
-        let myarr = s.split("");
-        let i = 0
-        let j = s.length - 1
-        while (i < j) {
-            let tem = myarr[i]
-            myarr[i] = myarr[j]
-            myarr[j] = tem
-            i++
-            j--
+        maxValue.innerText = "Both are equal";
+    }
+});
+
+
+// 2. REVERSE STRING
+
+let stringInput = document.getElementById("string-to-rev");
+let reverseButton = document.getElementById("make-rev");
+let reversedString = document.getElementById("reversed-str");
+
+reverseButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let str = stringInput.value;
+
+    if (str === "") {
+        alert("Please enter a string");
+        return;
+    }
+
+    let arr = str.split("");
+
+    let i = 0;
+    let j = arr.length - 1;
+
+    while (i < j) {
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+
+        i++;
+        j--;
+    }
+
+    reversedString.innerText = arr.join("");
+});
+
+
+// 3. FIND LARGEST STRING
+
+let stringsInput = document.getElementById("string-inp");
+let largestButton = document.getElementById("give-larg");
+let largestValue = document.getElementById("Large-value");
+
+largestButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let str = stringsInput.value;
+
+    if (str === "") {
+        alert("Please enter comma separated strings");
+        return;
+    }
+
+    let words = str.split(",");
+
+    let largest = "";
+    let maxLength = 0;
+
+    words.forEach(function (word) {
+
+        word = word.trim();
+
+        if (word.length > maxLength) {
+            maxLength = word.length;
+            largest = word;
         }
-        let revers_res = myarr.join("")
-        reversed.innerText = revers_res
+    });
+
+    largestValue.innerText = largest;
+});
+
+// 4. SAVE COOKIE
+
+let userName = document.getElementById("user-name");
+let phoneNumber = document.getElementById("Phone-num");
+
+let cookieName = document.getElementById("cooki-name");
+let cookiePhone = document.getElementById("cooki-Phone");
+
+let saveCookieButton = document.getElementById("save-cookie");
+
+
+saveCookieButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let name = userName.value;
+    let phone = phoneNumber.value;
+
+    if (name === "") {
+        alert("Please enter your name");
+        return;
     }
+
+    if (phone.length !== 10) {
+        alert("Phone number should contain 10 digits");
+        return;
+    }
+
+    document.cookie =
+        "name=" + encodeURIComponent(name) +
+        "; max-age=86400; path=/";
+
+    document.cookie =
+        "phone=" + encodeURIComponent(phone) +
+        "; max-age=86400; path=/";
+
+    cookieName.innerText = name;
+    cookiePhone.innerText = phone;
+
+    alert("Cookie saved successfully");
+});
+
+
+
+// 5. LOAD COOKIE AUTOMATICALLY
+
+function loadCookies() {
+
+    let cookies = document.cookie.split(";");
+
+    cookies.forEach(function (cookie) {
+
+        let parts = cookie.trim().split("=");
+
+        let key = parts[0];
+        let value = decodeURIComponent(parts[1] || "");
+
+        if (key === "name") {
+
+            userName.value = value;
+
+            cookieName.innerText = value;
+        }
+
+        if (key === "phone") {
+
+            phoneNumber.value = value;
+
+            cookiePhone.innerText = value;
+        }
+    });
 }
 
 
-//For largetst words
+$(document).ready(function(){
+    $(".mypage-content").css({
+        "background-color":"#FFFF88 ",
+        "padding": "10px",
+        "border-radius":"10px",
+        "margin": "5px"
+    });
+    $(".my-table").css({
+        "border": "2px solid #FF1A00",
+        "margin":"5px",
+        "color":"#CC0000",
+        "font-size":"20px"
+    })
+    $(".page-header").css({
+        "height": "10px",
+        "font-size":"30px",
+        "overflow": "hidden",
+        "text-align": "center",
+        "border":"2px solid #CC0000",
+        "border-radius":"10px",
+        "color":"#980202",
+        "background-color":"#fbac3c"
+    });
 
-let sent1 = document.getElementById("sent");
-let lar = document.getElementById("lar");
+    $(".page-header").on("mouseenter", function () {
+        $(this).css({
+            "height": "140px",
+            "text-align":"center"
+        });
+    });
+    
+    $(".page-header").on("mouseleave", function () {
+        $(this).css("height", "20px");
+    });
+    $(".all-input").css({
+        "border":"none",
+        "padding":"10px",
+        "border-radius":"10px"
+    });
+    $(".my-buttons").css({
+        "padding": "10px",
+        "font-size": "20px",
+        "background-color": "green",
+        "color": "yellow",
+        "border-radius": "10px"
+    })
+     $(".max-value,.reverse-string,.find-largest-str,.cookies").css({
+         
+        "padding": "10px",
+        "margin": "10px",
+        "border": "1px solid white",
+        "border-radius": "10px",
+        "background-color": "#E98B50"
+     });
+    $(".page-footer").before("<div><h2>Reference</h2><h3>1. <a href='https://www.w3schools.com/jquery/jquery_events.asp'>Refer here for the Jquery</a></h3></div>"); 
+  
+    $(".page-footer").css({
+        "text-align": "center",
+        "border":"2px solid #e08080",
+        "border-radius":"10px",
+        "padding":"20px",
+        "font-size":"20px",
+        "display":"flex",
+        "justify-content":"space-between",
+        "color":"#edebeb",
+        "background-color":"#cf1f1f"
+    })
+    $(".page-footer").hide();
+    $(".page-footer").slideDown(10000, function () {
+        alert("Slidedown after 10 seconds");
+    });
+})
 
-function find_largest() {
-    let s1 = sent1.value;
-    if (s1.length === 0) {
-        alert("please enter a value to make it revers");
-    }
-    else {
-        let ar = s1.split(",");
-        let maxx = 0
-        let larword = ""
-        ar.map((word) => {
-            let len = word.length;
-            if (len > maxx) {
-                larword = word;
-                maxx = len;
-            }
-        })
-        lar.innerText = larword;
-    }
-}
 
 
 
 
-//cookie printing
-let nam = document.getElementById("name");
-let phone = document.getElementById("ph");
 
 
-function save_cooki() {
-    let see = nam.value;
-    let n = phone.value;
-    if (see.length === 0) {
-        alert("you should enter the name");
-    }
-    if (n.toString().length < 10 || n.toString().length > 10) {
-        alert("hey Phone number length should be a lenght of 10")
-    }
-    else {
-        document.cookie = "name=" + encodeURIComponent(nam.value) + "; max-age=86400; path=/";
-        document.cookie = "ph=" + encodeURIComponent(phone.value) + "; max-age=86400; path=/";
-        alert("data saved successfully")
-    }
-}
-function load_cookie() {
-    /*console.log(document.cookie);*/
 
-    let cook = document.cookie
-    let a = cook.split(";")
-    nam.innerText = a[0]
-    ph.innerText = a[1]
-};
 
-//JQuery activity here
+
+
 $(window).on("load", function () {
-
+    loadCookies();
     alert("Page fully loaded");
 });
-$(document).ready(function () {
-
-    $("#full_body").css("background-color", "#F3CD97");
-    $("input").css("border", "none");
-    $("input").css("padding", "10px");
-    $("input").css("border-radius", "10px");
-    $("table,th,td").css("border", "2px solid #FF1A00 ");
-    $("#tbl").each(function () {
-        $(this).css("color", "#CC0000");
-    });
-    $("#mypage-footer").hide();
-
-    $("#mypage-footer").before("<div></div>");
-    $("footer").css({
-        "background-color": "#BC4F4F", "color": "white",
-        "justify-content": "space-evenly",
-        "padding": "10px",
-        "margin": "10px 0px 10px 0px",
-        "border-radius": "10px"
-
-    });
-    $("a").css("text-decoration", "none")
-    // $("#mypage-footer").toogle();
-    //    $("#mypage-header").mouseenter(function(){
-    //         $(this).css("font-size","10px");
-    //     });
-
-
-    $("#mypage-header").css({
-        "height": "10px",
-        "overflow": "hidden",
-        "text-align": "center"
-    });
-
-    $("#mypage-header").on("mouseenter", function () {
-
-        $(this).css("height", "50px");
-    });
-
-    $("#mypage-header").on("mouseleave", function () {
-
-        $(this).css("height", "10px");
-
-    });
-
-    $("#full_body").css({
-        "padding": "10px",
-        "margin": "10px"
-    })
-
-
-
-    // $("#mypage-header").css({"height":"10px","overflow":"hidden"})
-
-    // $("#mypage-header").on("mouseenter", function(){
-    //     $(this).css("font-size","30px");
-    // });
-    // $("#mypage-header").on("mouseleave", function(){
-    //     $(this).css("font-size","10px");
-    // });
-    $("#mypage-footer").slideDown(10000, function () {
-        alert("Slidedown after 10 seconds")
-    });
-
-});
-$(".dis").css({
-    "display": "flex",
-    "border": "1px solid white",
-    "border-radius": "10px",
-    "padding": "10px",
-    "width": "50%",
-    "margin": "20px",
-    "padding-left": "30px"
-
-})
-$(".b").css({
-    "display": "flex",
-    "padding": "10px",
-    "width": "96%",
-    "margin": "20px",
-    "border": "1px solid white",
-    "border-radius": "10px",
-    "background-color": "#E98B50"
-
-})
-$("button").css({
-    "padding": "10px",
-    "font-size": "20px",
-    "background-color": "green",
-    "color": "white",
-    "border-radius": "10px"
-})
-// a. Change the background color to #FFFF88 and 
-// remove the border for all input elements in the
-//  page. Change table border color to #FF1A00 and 
-//  text to #CC0000.
-
-$("#contact-info").css({
-    "display": "flex",
-    "justify-content": "space-evenly",
-    "align-items": "center"
-});
-$("#tbl").css({
-    "background-color": "#FEF2A0",
-    "margin-left": "30px",
-
-})
-$("td").css({
-    "padding": "10px"
-})
