@@ -53,25 +53,7 @@
         $user = $user_result->fetch_assoc();
         echo '<h1>WELCOME :- <a href="profile.php?id=' . $user["USER_ID"] . '">' . $user["NAME"] . '</a></h1>';
     ?>
-    <?php
-        $conn = new mysqli("localhost", "uday", "Root@1234", "FACEBOOK");
-        if($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $post = $_POST["post"];
-            $sql = "INSERT INTO WALL (USER_ID, POST)
-                    VALUES (?, ?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("is", $id, $post);
-
-            if ($stmt->execute()) {
-                echo "Post added successfully";
-            } else {
-                echo "Error: " . $stmt->error;
-            }
-        }
-    ?>
+  
     <h3>Post's</h3>
         <table>
             <tr>
@@ -97,32 +79,39 @@
     </table>
     <h2>Create Post</h2>
         <form method="POST">
-            <input type="text" name="post" placeholder="Enter your post">
+            <input type="text" name="post" placeholder="Enter your post" required>
             <button type="submit">Post</button>
         </form>
-    <?php
+        <?php
+
         $conn = new mysqli("localhost", "uday", "Root@1234", "FACEBOOK");
 
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
 
+        if (!isset($_GET["id"])) {
+            die("User ID not provided");
+        }
+
+        $id = (int) $_GET["id"];
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
             $post = $_POST["post"];
+
             $sql = "INSERT INTO WALL (USER_ID, POST)
-        VALUES (?, ?)";
+                    VALUES (?, ?)";
+
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $user["USER_ID"]);
-            $stmt->bind_param("s", $post);
+            $stmt->bind_param("is", $id, $post);
 
             if ($stmt->execute()) {
-                echo "Post added successfully";
-            }
-            else {
-                echo "Error: " . $stmt->error;
+                header("Location: home.php?id=" . $id);
+                exit();
             }
         }
-    ?>
-    
+
+        ?>
 </body>
 </html>
