@@ -64,7 +64,7 @@ SELECT *FROM WALL WHERE USER_ID=(SELECT USER_ID FROM USER WHERE NAME='Uday Kumar
 -- 4TH. Write a query to fetch all posts of a particular friend of a person, given his name and the friends name.
 SELECT * FROM WALL WHERE USER_ID =( 
     SELECT USER_ID FROM USER WHERE NAME='Rahul Sharma' AND USER_ID IN (
-        SELECT F.FRIEND_ID FROM USER U JOIN FRIEND F ON U.USER_ID=F.USER_ID 
+        SELECT F.FRIEND_ID  FROM USER U JOIN FRIEND F ON U.USER_ID=F.USER_ID 
         WHERE U.NAME="Uday Kumar"));
 
 -- 5TH. Write a query to fetch all friends of a particular friend of a person, given the persons name and friend's name.
