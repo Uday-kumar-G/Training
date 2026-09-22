@@ -1,6 +1,6 @@
 // 1. FIND MAX VALUE
 
-let firstInput = document.getElementById("fitst-input");
+let firstInput = document.getElementById("first-input");
 let secondInput = document.getElementById("second-input");
 let maxValue = document.getElementById("max-value");
 let maxButton = document.getElementById("submit-btn");
