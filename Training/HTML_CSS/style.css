@@ -20,6 +20,9 @@
 .left-navbar{
   display: flex;
 }
+.page-navbar a:hover{
+  color:#242bff
+}
 .page-navbar{
   font-size: 20px;
   border: 2px solid black;
@@ -85,4 +88,7 @@
   color: #ffe0b3;
   text-decoration: none;
 
+}
+#nav-object{
+  margin-top:40%;
 }
