@@ -1,6 +1,6 @@
 // 1. FIND MAX VALUE
 
-let firstInput = document.getElementById("fitst-input");
+let firstInput = document.getElementById("first-input");
 let secondInput = document.getElementById("second-input");
 let maxValue = document.getElementById("max-value");
 let maxButton = document.getElementById("submit-btn");
@@ -15,7 +15,6 @@ maxButton.addEventListener("click", function (event) {
         alert("Please enter both numbers");
         return;
     }
-
     if (num1 > num2) {
         maxValue.innerText = num1;
     } 
@@ -26,7 +25,6 @@ maxButton.addEventListener("click", function (event) {
         maxValue.innerText = "Both are equal";
     }
 });
-
 
 // 2. REVERSE STRING
 
