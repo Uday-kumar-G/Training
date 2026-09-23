@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Users</title>
+    <title>Home page</title>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
     <?php
@@ -18,7 +19,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
         if (!isset($_GET["id"])) {
-            die("User ID not provided");
+            die("User ID not provided, so plz rpovide user id in url like this \"home.php?id=1\" for 1st user");
         }
         $id = (int) $_GET["id"];
 
@@ -51,14 +52,48 @@
         $user_stmt->execute();
         $user_result = $user_stmt->get_result();
         $user = $user_result->fetch_assoc();
-        echo '<h1>WELCOME :- <a href="profile.php?id=' . $user["USER_ID"] . '">' . $user["NAME"] . '</a></h1>';
+        echo '<h1 class="my-title">WELCOME  <a href="profile.php?id=' . $user["USER_ID"] . '">' . $user["NAME"] . '</a></h1>';
     ?>
-  
-    <h3>Post's</h3>
-        <table>
+
+<!-- //FOR THE CREATE POST FORM -->
+<h2 id="create-post" class="form-title">Create Post</h2>
+        <form method="POST" >
+            <textarea type="text-area" id="post" class="form-input" name="post" placeholder="Write your content to post here..." required></textarea>
+            <br>
+            <button id="save" class="form-button" type="submit">
+                Post
+            </button>
+            <p id="message" class="form-message"></p>
+        </form>
+        <?php
+            $conn = new mysqli(
+            "localhost",
+            "uday",
+            "Root@1234",
+            "FACEBOOK");
+            $post = trim($_POST["post"]);
+            if ($post!=""){
+                $sql = "INSERT INTO WALL
+                        (USER_ID, POST)
+                        VALUES (1, ?)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $post);
+                if ($stmt->execute() and strlen($post) > 0) {
+                    echo "Post created successfully";
+                }
+                else
+                {
+                    echo "Failed to create post";
+                }
+                $conn->close();
+            }
+        ?>
+    
+    <h3 id="post-title">Post's</h3>
+        <table class="post-table" id="my-table">
             <tr>
-                <td>date</td>
-                <td>Post</td>
+                <th>Date</th>
+                <th>Post</th>
             </tr>
     <?php
         if($sql_post->num_rows>0)
@@ -72,46 +107,16 @@
             }
         } 
         else {
-            echo "<tr><td colspan='3'>No users found</td></tr>";
+            echo "<tr><td colspan='3'>No users post found</td></tr>";
         }
         $conn->close();
     ?>
     </table>
-    <h2>Create Post</h2>
-        <form method="POST">
-            <input type="text" name="post" placeholder="Enter your post" required>
-            <button type="submit">Post</button>
-        </form>
-        <?php
-
-        $conn = new mysqli("localhost", "uday", "Root@1234", "FACEBOOK");
-
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        if (!isset($_GET["id"])) {
-            die("User ID not provided");
-        }
-
-        $id = (int) $_GET["id"];
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            $post = $_POST["post"];
-
-            $sql = "INSERT INTO WALL (USER_ID, POST)
-                    VALUES (?, ?)";
-
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("is", $id, $post);
-
-            if ($stmt->execute()) {
-                header("Location: home.php?id=" . $id);
-                exit();
-            }
-        }
-
-        ?>
-</body>
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
+    <script src="wall.js"></script> -->
+    </body>
 </html>
+
+
+        
