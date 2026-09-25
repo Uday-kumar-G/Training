@@ -10,10 +10,8 @@
         $username = "uday";
         $password = "Root@1234";
         $dbname = "FACEBOOK";
-
         // Connect to MySQL
         $conn = new mysqli($servername, $username, $password, $dbname);
-
         // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
@@ -21,42 +19,43 @@
         if (!isset($_GET["id"])) {
             die("User ID not provided, so plz rpovide user id in url like this \"home.php?id=1\" for 1st user");
         }
+        // from url fetching the id value and converting it into the int
         $id = (int) $_GET["id"];
-
-        // SQL query
-        $sql = "SELECT * FROM USER";
-        $sql1 = "SELECT * FROM FRIEND"; 
-        $sql2="SELECT * FROM WALL order by POSTING_DATE desc";
+        // SQL query's to fetch all details
+        $sql = "SELECT * 
+                FROM USER";
+        $sql1 = "SELECT * 
+                FROM FRIEND"; 
+        $sql2="SELECT * 
+               FROM WALL 
+               order by POSTING_DATE desc";
         
         $result = $conn->query($sql);
-        // $result1 = $conn->query($sql);
         $result_FRND_ = $conn->query($sql1);
-        
+        // for fetching the post details
         $my_post = "SELECT *
-            FROM WALL
-            WHERE USER_ID = ?
-            ORDER BY POSTING_DATE DESC";
+                    FROM WALL
+                    WHERE USER_ID = ?
+                    ORDER BY POSTING_DATE DESC";
 
-        $post_stmt = $conn->prepare($my_post);
-        $post_stmt->bind_param("i", $id);
-        $post_stmt->execute();
-
-        $sql_post = $post_stmt->get_result();
+        $post_statement = $conn->prepare($my_post);
+        $post_statement->bind_param("i", $id);
+        $post_statement->execute();
+        $sql_post = $post_statement->get_result();
     ?>
     <?php
         $user_sql = "SELECT USER_ID, NAME, EMAIL, ADDRESS, PHONE
-             FROM USER
-             WHERE USER_ID = ?";
-        $user_stmt = $conn->prepare($user_sql);
-        $user_stmt->bind_param("i", $id);
-        $user_stmt->execute();
-        $user_result = $user_stmt->get_result();
+                     FROM USER
+                     WHERE USER_ID = ?";
+        $user_statement = $conn->prepare($user_sql);
+        $user_statement->bind_param("i", $id);
+        $user_statement->execute();
+        $user_result = $user_statement->get_result();
         $user = $user_result->fetch_assoc();
         echo '<h1 class="my-title">WELCOME  <a href="profile.php?id=' . $user["USER_ID"] . '">' . $user["NAME"] . '</a></h1>';
     ?>
-
-<!-- //FOR THE CREATE POST FORM -->
-<h2 id="create-post" class="form-title">Create Post</h2>
+    <!-- //FOR THE CREATE POST -->
+    <h2 id="create-post" class="form-title">Create Post</h2>
         <form method="POST" >
             <textarea type="text-area" id="post" class="form-input" name="post" placeholder="Write your content to post here..." required></textarea>
             <br>
@@ -73,12 +72,12 @@
             "FACEBOOK");
             $post = trim($_POST["post"]);
             if ($post!=""){
-                $sql = "INSERT INTO WALL
-                        (USER_ID, POST)
-                        VALUES (1, ?)";
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param("s", $post);
-                if ($stmt->execute() and strlen($post) > 0) {
+                $sql = "INSERT INTO WALL (USER_ID, POST)
+                            VALUES 
+                                (1, ?)";
+                $statement = $conn->prepare($sql);
+                $statement->bind_param("s", $post);
+                if ($statement->execute() and strlen($post) > 0) {
                     echo "Post created successfully";
                 }
                 else
@@ -88,7 +87,6 @@
                 $conn->close();
             }
         ?>
-    
     <h3 id="post-title">Post's</h3>
         <table class="post-table" id="my-table">
             <tr>
@@ -112,10 +110,7 @@
         $conn->close();
     ?>
     </table>
-    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
-    <script src="wall.js"></script> -->
-    </body>
+</body>
 </html>
 
 
