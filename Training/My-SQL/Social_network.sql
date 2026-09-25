@@ -59,23 +59,44 @@ POST VARCHAR(200) NOT NULL, FOREIGN KEY(USER_ID) REFERENCES USER(USER_ID));
 select * from USER WHERE NAME='Uday Kumar';
 
 -- 3RD. Write a query to fetch all posts of a person given his name
-SELECT *FROM WALL WHERE USER_ID=(SELECT USER_ID FROM USER WHERE NAME='Uday Kumar');
+select W.USER_ID,W.POST,W.POSTING_DATE 
+from WALL W join USER U on U.USER_ID=W.USER_ID 
+where U.NAME="Priya Reddy";
 
 -- 4TH. Write a query to fetch all posts of a particular friend of a person, given his name and the friends name.
-SELECT * FROM WALL WHERE USER_ID =( 
-    SELECT USER_ID FROM USER WHERE NAME='Rahul Sharma' AND USER_ID IN (
-        SELECT F.FRIEND_ID  FROM USER U JOIN FRIEND F ON U.USER_ID=F.USER_ID 
-        WHERE U.NAME="Uday Kumar"));
+SELECT W.POST 
+FROM USER U 
+LEFT OUTER JOIN FRIEND F ON U.USER_ID = F.USER_ID 
+LEFT OUTER JOIN USER FR ON FR.USER_ID = F.FRIEND_ID 
+LEFT OUTER JOIN WALL W ON W.USER_ID = FR.USER_ID 
+WHERE FR.NAME = 'Arun Kumar' AND U.NAME = 'Rahul Sharma';
 
--- 5TH. Write a query to fetch all friends of a particular friend of a person, given the persons name and friend's name.
-SELECT * FROM USER WHERE USER_ID IN (
-    SELECT F.FRIEND_ID FROM USER U JOIN FRIEND F ON U.USER_ID=F.USER_ID WHERE U.NAME='Rahul Sharma' and U.USER_ID IN (
-        SELECT F.FRIEND_ID FROM USER U JOIN FRIEND F ON U.USER_ID=F.USER_ID WHERE U.NAME='Uday Kumar'));
+-- 5TH. Write a query to fetch all friends of a particular friend of a person, 
+-- given the persons name and friend's name.
+select FRU.NAME 
+from USER U 
+left outer join FRIEND F on U.USER_ID = F.USER_ID 
+left outer join USER FU on F.FRIEND_ID=FU.USER_ID
+left outer join FRIEND FR on F.FRIEND_ID=FR.USER_ID
+left outer join USER FRU on FR.FRIEND_ID=FRU.USER_ID
+where U.NAME="Uday Kumar" and FU.NAME="Rohit Sharma";
 
+-- 6TH. Write a query to remove a particular 
+-- friend from a persons list, given the 
+-- persons name
 
--- 6TH. Write a query to remove a particular friend from a persons list, given the persons name
-DELETE FROM FRIEND WHERE USER_ID=(SELECT USER_ID FROM USER WHERE NAME="Uday Kumar")AND 
-FRIEND_ID=(SELECT USER_ID FROM USER WHERE NAME="Rahul Sharma");
+delete F from USER U l
+eft outer join FRIEND F 
+on U.USER_ID=F.USER_ID 
+left outer join USER FR 
+on FR.USER_ID=F.FRIEND_ID 
+where U.NAME="Uday kumar" 
+AND FR.NAME="Rohit Sharma";
 
--- 7TH. Write a query to post something on his wall
-INSERT INTO WALL(USER_ID,POST) (SELECT USER_ID,"HELLO HOW ARE YOU" FROM USER WHERE NAME="Uday Kumar");
+-- 7TH. Write a query to post
+--  something on his wall
+INSERT INTO WALL (USER_ID, POST)
+SELECT USER_ID, 'hey this is the msg'
+FROM USER 
+WHERE NAME = 'Uday Kumar';
+
