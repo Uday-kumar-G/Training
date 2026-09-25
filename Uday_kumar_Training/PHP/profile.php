@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profile page</title>
+    <link rel="stylesheet" href="profile.css">
 </head>
 <body>
 <div class="content">
@@ -36,35 +37,35 @@
             die("User not found.");
         }
     ?>
-    <h1>Wlecome to  <a href="profile.php?id=<?php echo $id; ?>"><?php echo $user["NAME"]; ?></a>'s profile</h1>
-    <p>email:<?php echo $user["EMAIL"];?></p>
-    <p>address:<?php echo $user["ADDRESS"];?></p>
-    <p>phone:<?php echo $user["PHONE"];?></p>
-
-    <h4>This is your profile</h4>
-    <h3>
+    <h1 class="my-title">Wlecome to  <a href="profile.php?id=<?php echo $id; ?>"><?php echo $user["NAME"]; ?></a>'s profile</h1>
+    <div class="my-address">
+        <p>Email:  <?php echo $user["EMAIL"];?></p>
+        <p>Address:  <?php echo $user["ADDRESS"];?></p>
+        <p>Phone:  <?php echo $user["PHONE"];?></p>
+    </div>
+    <button class="my-friends">
         <a href="friends.php?id=<?php echo $id; ?>">FRIENDS</a>
-    </h3>
+    </button><br>
     <?php
         $current_user_id = 1;
         if ($id == $current_user_id) {
-        echo '<h3>
+        echo '<button class="my-update">
             <a href="update.php?id=1">
                 Update
             </a>
-          </h3>';
+          </button>';
         }
 
 ?>
-    <h3>
+    <button class="my-home">
         <a href="home.php?id=1">HOME</a>
-    </h3>
-    <h3>Post's</h3>
+    </button>
+    <h3 class="my-post-title">Post's</h3>
 
-    <table>
+    <table class="my-post-table">
         <tr>
-            <td>date</td>
-            <td>Post</td>
+            <th>Date</th>
+            <th>Post</th>
         </tr>
         <?php
             $sql_post="SELECT POST,POSTING_DATE FROM WALL WHERE USER_ID=? ORDER BY POSTING_DATE DESC";

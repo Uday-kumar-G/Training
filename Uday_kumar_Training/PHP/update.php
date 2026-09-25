@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Profile</title>
+    <link rel="stylesheet" href="update.css">
 </head>
 <body>
 
@@ -28,19 +29,33 @@
             die("User ID not specified.");
         }
         $id = $_GET["id"];
+        $sql = "SELECT NAME, EMAIL, ADDRESS, PHONE
+        FROM USER
+        WHERE USER_ID = ?";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
     ?>
-    <h3>
+    <button class="my-home">
         <a href="home.php?id=<?php echo $id; ?>">HOME</a>
-    </h3>
+    </button>
     <br>
-    <h3>Update your profile</h3>
+    <h3 class="my-form-title">Update your profile</h3>
     <br>
-    <form action="update.php?id=<?php echo $id; ?>" method="post">
-        name:- <input type="text" name="name" id=""><br><br>
-        email:- <input type="email" name="email" id=""><br><br>
-        password:- <input type="password" name="password" id=""><br><br>
-        address:- <input type="text" name="address" id=""><br><br>
-        phone:- <input type="text" name="phone" id=""><br><br>
+    <form class="update-form" action="update.php?id=<?php echo $id; ?>" method="post">
+        name:- <input type="text" name="name" id="" required value="<?php echo $user["NAME"]; ?>"><br><br>
+        email:- <input type="email" name="email" id="" required value="<?php echo $user["EMAIL"]; ?>"><br><br>
+        password:- <input type="password" name="password" id="password" required >
+        <button type="button" onclick="togglePassword()">
+            Show / Hide
+        </button>
+        <br><br>
+        address:- <input type="text" name="address" id="" required value="<?php echo $user["ADDRESS"]; ?>"><br><br>
+        phone:- <input type="text" name="phone" id="" required value="<?php echo $user["PHONE"]; ?>"><br><br>
         <button type="submit">Update</button><br><br>
     </form>
     <?php
@@ -75,9 +90,20 @@
     ?>
     <br>
     <br>
-    <a href="profile.php?id=1">
+    <a id="back-to-profile" href="profile.php?id=1">
     Back to Profile
-</a>
+    </a>
+<script>
+function togglePassword() {
 
+    let password = document.getElementById("password");
+
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
+</script>
 </body>
 </html>
