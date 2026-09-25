@@ -84,7 +84,7 @@ WHERE
 -- 3RD. Write a query to fetch all posts of a person given his name
 SELECT W.USER_ID,W.POST,W.POSTING_DATE 
 FROM WALL W 
-JOIN USER U 
+LEFT OUTER JOIN USER U 
     ON U.USER_ID=W.USER_ID 
 WHERE 
     U.NAME="Priya Reddy";
